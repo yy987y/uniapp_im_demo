@@ -1,0 +1,219 @@
+<template>
+  <view class="app">
+    <router-view />
+  </view>
+</template>
+
+<script>
+export default {
+  onLaunch() {
+    console.log('App Launch')
+  },
+  onShow() {
+    console.log('App Show')
+  },
+  onHide() {
+    console.log('App Hide')
+  }
+}
+</script>
+
+<style>
+/* 全局样式 */
+page {
+  background-color: #f5f5f5;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.container {
+  padding: 20rpx;
+}
+
+/* 通用按钮样式 */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  background-color: #007AFF;
+  color: #ffffff;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.btn:active {
+  opacity: 0.8;
+}
+
+.btn-secondary {
+  background-color: #4CD964;
+}
+
+.btn-warning {
+  background-color: #FF9500;
+}
+
+.btn-danger {
+  background-color: #FF3B30;
+}
+
+.btn-disabled {
+  background-color: #cccccc;
+}
+
+/* 输入框样式 */
+.input-group {
+  background-color: #ffffff;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  border-radius: 8rpx;
+}
+
+.input-label {
+  font-size: 26rpx;
+  color: #666666;
+  margin-bottom: 10rpx;
+}
+
+.input-field {
+  width: 100%;
+  height: 70rpx;
+  border: 1px solid #e0e0e0;
+  border-radius: 6rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.textarea-field {
+  width: 100%;
+  min-height: 150rpx;
+  border: 1px solid #e0e0e0;
+  border-radius: 6rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+/* 卡片样式 */
+.card {
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.card-subtitle {
+  font-size: 26rpx;
+  color: #666666;
+  margin-bottom: 12rpx;
+}
+
+/* 日志样式 */
+.log-container {
+  background-color: #1e1e1e;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  margin-top: 20rpx;
+  max-height: 500rpx;
+  overflow-y: auto;
+}
+
+.log-item {
+  font-size: 22rpx;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 10rpx;
+  word-break: break-all;
+}
+
+.log-info {
+  color: #4fc3f7;
+}
+
+.log-success {
+  color: #81c784;
+}
+
+.log-error {
+  color: #e57373;
+}
+
+.log-warn {
+  color: #ffb74d;
+}
+
+.log-time {
+  color: #888888;
+  margin-right: 10rpx;
+}
+
+/* 状态标签 */
+.status-tag {
+  display: inline-block;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+}
+
+.status-online {
+  background-color: #e8f5e9;
+  color: #4caf50;
+}
+
+.status-offline {
+  background-color: #ffebee;
+  color: #f44336;
+}
+
+.status-connecting {
+  background-color: #fff3e0;
+  color: #ff9800;
+}
+
+/* 分割线 */
+.divider {
+  height: 1px;
+  background-color: #eeeeee;
+  margin: 20rpx 0;
+}
+
+/* flex布局 */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 0;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999999;
+  margin-top: 20rpx;
+}
+</style>
