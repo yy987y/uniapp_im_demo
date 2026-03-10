@@ -1,0 +1,27 @@
+
+.container.data-v-1cf27b2a { padding: 20rpx;
+}
+.status-row.data-v-1cf27b2a { display: flex; align-items: center; margin-bottom: 16rpx;
+}
+.status-row.data-v-1cf27b2a:last-child { margin-bottom: 0;
+}
+.status-label.data-v-1cf27b2a { font-size: 26rpx; color: #666666; width: 160rpx;
+}
+.status-value.data-v-1cf27b2a { font-size: 26rpx; color: #333333; flex: 1;
+}
+.quick-actions.data-v-1cf27b2a { display: flex; flex-wrap: wrap; gap: 16rpx;
+}
+.quick-actions .btn.data-v-1cf27b2a { flex: 1; min-width: 200rpx; margin-bottom: 0;
+}
+.status-tag.data-v-1cf27b2a { display: inline-block; padding: 6rpx 16rpx; border-radius: 20rpx; font-size: 22rpx;
+}
+.status-online.data-v-1cf27b2a { background-color: #e8f5e9; color: #4caf50;
+}
+.status-offline.data-v-1cf27b2a { background-color: #ffebee; color: #f44336;
+}
+.status-connecting.data-v-1cf27b2a { background-color: #fff3e0; color: #ff9800;
+}
+.card.data-v-1cf27b2a { background-color: #ffffff; border-radius: 12rpx; padding: 24rpx; margin-bottom: 20rpx; box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+.card-title.data-v-1cf27b2a { font-size: 32rpx; font-weight: bold; color: #333333; margin-bottom: 20rpx; padding-bottom: 16rpx; border-bottom: 1px solid #eeeeee;
+}

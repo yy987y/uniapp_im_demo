@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "云信IM SDK测试工具",
+  "usingComponents": {
+    "log-panel": "../../components/LogPanel"
+  }
+}
