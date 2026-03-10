@@ -146,6 +146,21 @@ export default {
           values[param.name] = ''
         }
       })
+      // 参数持久化：尝试从本地缓存回填上次使用的参数值
+      const cacheKey = 'api_params_' + this.apiName
+      try {
+        const saved = uni.getStorageSync(cacheKey)
+        if (saved) {
+          const cached = JSON.parse(saved)
+          Object.keys(cached).forEach(key => {
+            if (key in values) {
+              values[key] = cached[key]
+            }
+          })
+        }
+      } catch (e) {
+        // 缓存读取失败不影响功能
+      }
       this.paramValues = values
     },
     
@@ -207,10 +222,17 @@ export default {
           processedParams[param.name] = value
         }
         
-        // 执行API
         const result = await this.apiFunction(processedParams)
         this.result = result !== undefined ? result : { success: true, message: '执行成功' }
         this.isError = false
+        
+        // 执行成功后持久化参数，下次自动回填
+        try {
+          const cacheKey = 'api_params_' + this.apiName
+          uni.setStorageSync(cacheKey, JSON.stringify(this.paramValues))
+        } catch (e) {
+          // 持久化失败不影响功能
+        }
         
         this.$emit('success', { api: this.apiName, params: processedParams, result: this.result })
       } catch (error) {

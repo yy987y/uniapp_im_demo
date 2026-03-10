@@ -4,22 +4,22 @@
       <text class="log-title">执行日志</text>
       <view class="log-actions">
         <text class="action-btn" @click="copyLogs">复制</text>
-        <text class="action-btn" @click="clearLogs">清空</text>
+        <text class="action-btn" @click="handleClear">清空</text>
       </view>
     </view>
-    <scroll-view 
-      scroll-y 
+    <scroll-view
+      scroll-y
       :scroll-top="scrollTop"
       class="log-content"
       :style="{ height: height }"
     >
-      <view v-if="logs.length === 0" class="empty-log">
+      <view v-if="displayLogs.length === 0" class="empty-log">
         <text>暂无日志</text>
       </view>
       <view v-else>
-        <view 
-          v-for="(log, index) in logs" 
-          :key="index" 
+        <view
+          v-for="(log, index) in displayLogs"
+          :key="index"
           class="log-item"
           :class="'log-' + log.type"
         >
@@ -34,13 +34,12 @@
 </template>
 
 <script>
+import store from '@/utils/store.js'
+import logger from '@/utils/logger.js'
+
 export default {
   name: 'LogPanel',
   props: {
-    logs: {
-      type: Array,
-      default: () => []
-    },
     height: {
       type: String,
       default: '400rpx'
@@ -52,15 +51,25 @@ export default {
   },
   data() {
     return {
-      scrollTop: 0
+      scrollTop: 0,
+      displayLogs: []
     }
   },
+  created() {
+    this.displayLogs = [...store.logs]
+    this._unsub = store.subscribe(() => {
+      this.displayLogs = [...store.logs]
+    })
+  },
+  beforeUnmount() {
+    if (this._unsub) this._unsub()
+  },
   watch: {
-    logs: {
+    displayLogs: {
       handler() {
         if (this.autoScroll) {
           this.$nextTick(() => {
-            this.scrollTop = this.logs.length * 100
+            this.scrollTop = this.displayLogs.length * 100
           })
         }
       },
@@ -68,26 +77,23 @@ export default {
     }
   },
   methods: {
-    clearLogs() {
-      this.$emit('clear')
+    handleClear() {
+      logger.clear()
     },
-    
+
     copyLogs() {
-      const text = this.logs.map(log => {
+      const text = this.displayLogs.map(log => {
         let line = `[${log.time}] [${log.type.toUpperCase()}] ${log.message}`
         if (log.data) {
           line += '\n' + log.data
         }
         return line
       }).join('\n')
-      
+
       uni.setClipboardData({
         data: text || '暂无日志',
         success: () => {
-          uni.showToast({
-            title: '已复制',
-            icon: 'success'
-          })
+          uni.showToast({ title: '已复制', icon: 'success' })
         }
       })
     }
