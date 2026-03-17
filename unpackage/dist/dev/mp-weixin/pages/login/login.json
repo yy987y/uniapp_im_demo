@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "登录服务",
-  "usingComponents": {
-    "log-panel": "../../components/LogPanel"
-  }
-}
